@@ -20,8 +20,10 @@
 
 
 // Deel 3:
-
-
+    $lettertje               =       "e";
+    $cijfertje               =       3;
+    $langsteWoord            =       "zandzeepsodemineralenwatersteenstralen";
+    $nieuwLangsteWoord       =       str_replace( $lettertje, $cijfertje, $langsteWoord );
 
 ?>
 
@@ -57,7 +59,10 @@
         <h3>Deel 2:</h3>
             <p>De laatste letter "<?php echo $toFindLastCharacter ?>" bevindt zich op de <?php echo $positionLastCharacter ?>de plaats in het woord <?=$fruit2 ?>.</p>
         
+        
         <h3>Deel 3:</h3>
+        <p>Hier is het oude langste woord: <?php echo $langsteWoord?>.</p>
+        <p>Hier is het nieuwe langste woord: <?php echo $nieuwLangsteWoord?>!</p>
 		
 	</section>
 

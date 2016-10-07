@@ -1,6 +1,9 @@
 <?php
 
-    
+    $voornaam       =       "Phedra";
+    $achternaam     =       "Moerloos";
+    $volledigeNaam  =       $voornaam . $achternaam;
+    $aantalKarakters =      strlen( $volledigeNaam );
 
 ?>
 
@@ -23,6 +26,7 @@
 
 		<h1>Contatenate opdracht:</h1>
 		
+		<p>In het woord <?php echo $volledigeNaam ?> zitten <?= $aantalKarakters ?> karakters.</p>
 		
 
 	</section>

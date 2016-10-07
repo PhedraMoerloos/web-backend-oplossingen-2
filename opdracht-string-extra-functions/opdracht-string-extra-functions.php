@@ -61,8 +61,8 @@
         
         
         <h3>Deel 3:</h3>
-        <p>Hier is het oude langste woord: <?php echo $langsteWoord?>.</p>
-        <p>Hier is het nieuwe langste woord: <?php echo $nieuwLangsteWoord?>!</p>
+            <p>Hier is het oude langste woord: <?php echo $langsteWoord?>.</p>
+            <p>Hier is het nieuwe langste woord: <?php echo $nieuwLangsteWoord?>!</p>
 		
 	</section>
 

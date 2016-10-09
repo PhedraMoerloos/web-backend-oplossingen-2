@@ -58,23 +58,18 @@
 
 // Deel 2:
 
-
+    //2.1
     $dagHoofdletters        =       strtoupper( $dag );
 
-    //alle A's vervangen dus gewoon met replace
+    //2.2 alle A's vervangen dus gewoon met replace
     $letter                 =       "A";
     $dagHoofdlettersAniet   =       str_replace( $letter, strtolower($letter), $dagHoofdletters );
 
-    //met strrpos positie van laatste A in de dagen vinden
+    //2.3 met strrpos positie van laatste A in de dagen vinden
     $indexLaatsteA          =       strrpos( $dagHoofdletters, $letter );
+    $dagHoofdlettersLaatsteANiet =  substr_replace( $dagHoofdletters, strtolower($letter), $indexLaatsteA, 1 );
+    //substr_replace( string waar we in werken, het vervangende deel, vanaf welke index vervangen, hoeveel characters vervangen vanaf daar
     
-    
-
-/*
-*   $dagHoofdlettersNietLaatsteA    =   $dagHoofdletters ...
-*   hier dan enkel die laatste a (positie hebben we) --> to lowercase: strtolower()
-*
-*/
 
 
     /* Meer hard coded Deel 2.2:
@@ -108,6 +103,8 @@
 		<p>Komaan, enthousiaster, het is vandaag <?php echo $dagHoofdletters ?>!!</p>
 		
         <p>Als we alles in hoofdletters willen, behalve de a's, ziet dat er zo uit: <?php echo $dagHoofdlettersAniet ?>.</p>
+        
+        <p>Als we enkel de laatste "a" in kleine letters willen, ziet dat er zo uit: <?= $dagHoofdlettersLaatsteANiet ?></p>
 		
 		
 

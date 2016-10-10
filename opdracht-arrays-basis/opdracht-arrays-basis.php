@@ -16,15 +16,60 @@
     $dieren_2[]     =       "kat";
 
    
-    $voertuigen     =       array( "landvoertuigen" => array( "auto", "brommer" ), "luchtvoertuigen" => array( "vliegtuig" ), "watervoertuigen" => array( "cruise schip", "speedboot" ) );
+    $voertuigen     =       array( "landvoertuigen" => array( "auto", "brommer" ), 
+                                  "luchtvoertuigen" => array( "vliegtuig" ),
+                                  "watervoertuigen" => array( "cruise schip", "speedboot" ) );
 
 
 
 
     //Deel 2: 
     
+    //2.1
+    $getallenlijst      =       array( 1, 2, 3, 4, 5 );
     
+    //2.2
+    //$vermenigvuldiging  =       $getallenlijst[0] * $getallenlijst[1] * $getallenlijst[2] * $getallenlijst[3] * $getallenlijst[4];
+    $vermenigvuldiging    =       array_product( $getallenlijst );
     
+    //2.3
+    $omAfTeDrukken      =       "";
+
+    if( $getallenlijst[0] % 2 != 0 )
+    {
+        $omAfTeDrukken .= $getallenlijst[0];
+    }
+
+    if( $getallenlijst[1] % 2 != 0 )
+    {
+        $omAfTeDrukken .= $getallenlijst[1];
+    }
+
+    if( $getallenlijst[2] % 2 != 0 )
+    {
+        $omAfTeDrukken .= $getallenlijst[2];
+    }
+
+    if( $getallenlijst[3] % 2 != 0 )
+    {
+        $omAfTeDrukken .= $getallenlijst[3];
+    }
+
+    if( $getallenlijst[4] % 2 != 0 )
+    {
+        $omAfTeDrukken .= $getallenlijst[4];
+    }
+
+
+    //2.4
+    $reverseArray       =       array_reverse( $getallenlijst );
+    $arrayOptelsom0     =       $getallenlijst[0] + $reverseArray[0];
+    $arrayOptelsom1     =       $getallenlijst[1] + $reverseArray[1];
+    $arrayOptelsom2     =       $getallenlijst[2] + $reverseArray[2];
+    $arrayOptelsom3     =       $getallenlijst[3] + $reverseArray[3];
+    $arrayOptelsom4     =       $getallenlijst[4] + $reverseArray[4];
+    
+
         
 ?>
 
@@ -58,6 +103,17 @@
 		
 		<h3>Deel 2:</h3>
 		
+		<p>De vermenigvuldiging van alle getallen in de array geeft:<pre><?php print_r( $vermenigvuldiging ) ?></pre></p>
+		
+		<p>Deze getallen waren oneven: <pre><?php print_r( $omAfTeDrukken ) ?></pre></p>
+		
+		<p>De nieuwe array ziet er zo uit: <pre><?php print_r( $reverseArray ) ?></pre></p>
+		
+		<p>Som van de array waarden van index 0: <pre><?php print_r( $arrayOptelsom0 ) ?></pre></p>
+		<p>Som van de array waarden van index 1: <pre><?php print_r( $arrayOptelsom1 ) ?></pre></p>
+		<p>Som van de array waarden van index 2: <pre><?php print_r( $arrayOptelsom2 ) ?></pre></p>
+		<p>Som van de array waarden van index 3: <pre><?php print_r( $arrayOptelsom3 ) ?></pre></p>
+		<p>Som van de array waarden van index 4: <pre><?php print_r( $arrayOptelsom4 ) ?></pre></p>
 
 
 	</section>

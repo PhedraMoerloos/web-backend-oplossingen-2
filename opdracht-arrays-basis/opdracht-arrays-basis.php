@@ -1,5 +1,7 @@
 <?php
 
+    //Deel 1:
+
     $dieren         =       array( "slang", "olifant", "mier", "muis", "kangeroo", "paard", "zwaluw", "eekhoorn", "mug", "kat");
 
     $dieren_2[]     =       "slang";
@@ -14,9 +16,15 @@
     $dieren_2[]     =       "kat";
 
    
+    $voertuigen     =       array( "landvoertuigen" => array( "auto", "brommer" ), "luchtvoertuigen" => array( "vliegtuig" ), "watervoertuigen" => array( "cruise schip", "speedboot" ) );
 
 
 
+
+    //Deel 2: 
+    
+    
+    
         
 ?>
 
@@ -38,13 +46,19 @@
 
 		<h1>Array's basis:</h1>
 		
+		<h3>Deel 1:</h3>
+		
 		<pre><?php print_r( $dieren ) ?></pre>
 		
 		<p><?php var_dump( $dieren_2 ) ?></p>
 		
+		<pre><?php print_r( $voertuigen ) ?></pre>
 		
 		
 		
+		<h3>Deel 2:</h3>
+		
+
 
 	</section>
 

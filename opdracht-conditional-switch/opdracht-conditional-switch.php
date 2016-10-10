@@ -69,6 +69,10 @@
 		
 		<p>Het is vandaag <?php echo $dag ?>.</p>
 		
+		<pre><?php print_r( $dag ) ?></pre>
+		
+		<p><?php var_dump( $dag ) ?></p>
+		
 		
 		
 		

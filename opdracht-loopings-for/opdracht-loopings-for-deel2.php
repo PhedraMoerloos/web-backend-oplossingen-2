@@ -18,6 +18,16 @@
     <link rel="stylesheet" type="text/css" href="http://web-backend.local/css/global.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/directory.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/facade.css">
+	<style>
+    
+        .oneven 
+        {
+         
+            background-color: green;
+            
+        }
+        
+    </style>
 </head>
 
 <body class="web-backend-inleiding">
@@ -48,7 +58,8 @@
                         
                         <?php $uitkomst = $i * $j ?>
                         
-                        <td><?php echo $uitkomst ?></td>
+                        <td class="<?php echo( ($uitkomst % 2 != 0) ? "oneven" : "" ) ?>"><?php echo $uitkomst ?></td>
+                        <!--                   (condition) ? code->true : code->false     -->
                         
                         
                     <?php endfor ?>
@@ -59,6 +70,8 @@
             
 		
 		</table>
+		
+		
 
 
 	</section>

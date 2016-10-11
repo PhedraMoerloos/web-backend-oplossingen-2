@@ -1,19 +1,12 @@
 <?php
-
+    
+    $boodschappenlijstje    =   array( "appels", "brood", "salsa", "avocado's", "appelmoes" );
+    
     $i  =   0;
+    
+    $lengteArrayIndex       =   count( $boodschappenlijstje ) - 1;
 
-    /*while( $i <= 100 )
-    {
-     
-        $drukAf = $i;
-        
-        ++$i;
-        
-    }*/
-
-   
-
-        
+    
 ?>
 
 
@@ -23,6 +16,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Looping statements while:</title>
     <link rel="stylesheet" type="text/css" href="http://web-backend.local/css/global.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/directory.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/facade.css">
@@ -32,21 +26,21 @@
 
 	<section class="body">
 
-		<h1>Looping statements While:</h1>
+		<h1>Looping statements while:</h1>
 		
 		
-		<h3>Deel 1:</h3>
+		<h3>Deel 2:</h3>
 
-		<section>
+		<ul>
 		
-            <?php while( $i <= 100 ): ?>
+            <?php while( $i <= $lengteArrayIndex ): ?>
                
-                <p><?php echo $i ?></p>
+                <li><?php echo $boodschappenlijstje[$i] ?></li>
                 <?php ++$i ?>
                 
             <?php endwhile ?>
 		
-		</section>
+		</ul>
 
 
 	</section>

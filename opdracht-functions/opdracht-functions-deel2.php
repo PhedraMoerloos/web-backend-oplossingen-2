@@ -1,7 +1,7 @@
 <?php
     
     $helden =   array("Bla", "Blo", "Bli", 2, true, 3);
-    $uitvoerenMethode  =   drukArrayAfVolledig( $helden );
+    $arrayReturnMethode  =   drukArrayAfVolledig( $helden );
 
 
     function drukArrayAfVolledig( $array )
@@ -54,7 +54,7 @@
 		<p>Heel de array afdrukken:</p>
 
         <section>
-        <?php foreach( $uitvoerenMethode as $value ): ?>
+        <?php foreach( $arrayReturnMethode as $value ): ?>
         
             <p><?php echo $value ?></p>
         

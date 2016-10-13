@@ -13,7 +13,7 @@
         {
         
             $bedragKwijtDitJaar     =       $bedragOver *  $rentevoet;
-            $bedragOver             =       floor( ($bedragOver - $bedragKwijtDitJaar) );
+            $bedragOver             =       floor( ($bedragOver + $bedragKwijtDitJaar) );
             echo "De 10 jaar zijn om, hij eindigt met: " . $bedragOver ." euro. <br>";
             return;
             
@@ -23,8 +23,8 @@
         {
             
             $bedragKwijtDitJaar     =       $bedragOver *  $rentevoet;
-            $bedragOver             =       floor( ($bedragOver - $bedragKwijtDitJaar) );
-            echo "Nog " . ($jaar - 1) . " jaar te gaan, en hij heeft voorlopig nog " . $bedragOver . " euro over. <br>";
+            $bedragOver             =       floor( ($bedragOver + $bedragKwijtDitJaar) );
+            echo "Nog " . ($jaar - 1) . " jaar te gaan, en hij heeft voorlopig " . $bedragOver . " euro. <br>";
             HoeveelHoudtHijOver ( --$jaar );
             
         }

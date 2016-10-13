@@ -10,17 +10,17 @@
     foreach( $ReversedTextChars as $Character )
     {
         
-        //als er al een $ArrayNoDubbel['b'] bv is aangemaakt/een standaardwaarde heeft (niet null), 
-        if( isset( $ArrayNoDubbel[$Character] ) )
+        //we maken een array $ArrayNoDubbel[key] = value --> $ArrayNoDubbel[b] = 3 bv, we gaan dus kijken of de keys al bestaan (niet naar de waarden kijken --> in_array werkt met de values, isset kijkt naar de keys, array_key_exists() kan ook
+        if( array_key_exists( $Character, $ArrayNoDubbel ) )
         {
         
-            //gaan we deze $ArrayNoDubbel['b'] verhogen van waarde 1 naar 2
+            //gaan we deze $ArrayNoDubbel[b] verhogen van value 1 naar 2
             ++$ArrayNoDubbel[ $Character ];
             
         }
         
         
-        //als deze nog geen waarde heeft/nog niet is aangemaakt
+        //als deze key nog niet is aangemaakt --> aanmaken met standaard value 1
         else 
         {
             

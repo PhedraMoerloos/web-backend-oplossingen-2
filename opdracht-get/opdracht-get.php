@@ -1,27 +1,35 @@
 <?php
     
- 
-    $artikels        =       array( 
-                                    "titel"     => array(    "Dad and daughter spend $16 on park admission; find 2.03 carat diamond",
-                                                            "Thai King Bhumibol Adulyadej dies at 88",
-                                                            "Trump's ghost will haunt the GOP -- and possibly kill it"),
+    //de multifunctionele array moet bestaan uit 3 arrays met telkens de info per artikel zodat we bij de foreach elk artikels'info overlopen
+    $artikels        =       array(
         
-                                    "datum"     => array(    "12/10/2016",
-                                                            "13/10/2016",
-                                                            "12/10/2016"),
+                                    array(  "titel"     => "Dad and daughter spend $16 on park admission; find 2.03 carat diamond",
+                                            "datum"     => "12/10/2016",
+                                            "inhoud"    => "There are those who go to the Crater of Diamonds State Park, armed with shovels and buckets and kneepads and maps to spend the day meticulously digging for diamonds.",
+                                            "afbeelding"=> "father-and-daughter-find-large-diamond.jpg",
+                                            "afbeeldingBeschrijving"  => "Vader en dochter, hand met diamand naast een munt."
+                                        ),
         
-                                    "inhoud"    => array(   "There are those who go to the Crater of Diamonds State Park, armed with shovels and buckets and kneepads and maps to spend the day meticulously digging for diamonds.",
-                                                            "The king passed away in a 'peaceful manner', the Royal Palace said. Civil servants and officers working in government-related agencies are ordered to wear black clothes for one year in mourning from Friday. India's Prime Minister Narendra Modi described him as 'one of the tallest leaders of our times.",
-                                                            "It's all over for Donald Trump. He'll lose on November 8 and probably lose big, going over the cliff edge with his supporters like Thelma and Louise."),
         
-                                    "afbeelding"=> array(   "father-and-daughter-find-large-diamond.jpg",
-                                                            "thailand-king-bhumibol-adulyadej.jpg",
-                                                            "stanley-hedshot-story-body.jpg"),
         
-                                    "afbeeldingBeschrijving"  => array( "Vader en dochter, hand met diamand naast een munt.",
-                                                                        "2 vrouwen rouwen om de overleden koning terwijl ze een foto van hem vasthouden.",
-                                                                        "stanley hedshot foto van gezicht.")
-                                 );
+                                    array(  "titel"     =>  "Thai King Bhumibol Adulyadej dies at 88",
+                                            "datum"     =>  "13/10/2016",
+                                            "inhoud"    => "The king passed away in a 'peaceful manner', the Royal Palace said. Civil servants and officers working in government-related agencies are ordered to wear black clothes for one year in mourning from Friday. India's Prime Minister Narendra Modi described him as 'one of the tallest leaders of our times.",
+                                            "afbeelding"=> "thailand-king-bhumibol-adulyadej.jpg",
+                                            "afbeeldingBeschrijving"  => "2 vrouwen rouwen om de overleden koning terwijl ze een foto van hem vasthouden."
+                                        ),
+                        
+        
+        
+                                    array(  "titel"     => "Trump's ghost will haunt the GOP -- and possibly kill it",
+                                            "datum"     =>  "12/10/2016",
+                                            "inhoud"    => "It's all over for Donald Trump. He'll lose on November 8 and probably lose big, going over the cliff edge with his supporters like Thelma and Louise.",
+                                            "afbeelding"=> "stanley-hedshot-story-body.jpg",
+                                            "afbeeldingBeschrijving"  => "stanley hedshot foto van gezicht."
+                                         )
+        
+        
+                                    ); //einde algemene array
 
     
 
@@ -48,16 +56,17 @@
         .bodyArtikel 
         {
             
-            background-color: rgb(180, 180, 180);
+            background-color: rgb(227, 227, 227);
             width: 400px;
             padding: 20px;
+            margin-bottom: 15px;
             
         }
         
         .title 
         {
             
-            border-bottom: 1px solid #464646;
+            border-bottom: 1px solid #727272;
             font-weight: bold;
             
         }
@@ -83,22 +92,31 @@
 		<h3>De krant van vandaag</h3>
 		
         
+        <section>
+        <?php foreach( $artikels as $key => $value ): ?>
+        
+            <!--php print_r( $value ): is de array per artikel dus als we een value uit die array willen -> $naamArray(hier $value)['key'] -> value
+            -->
         
 		    <div class="bodyArtikel">
                
-               <p class="title">Voorbeeldtitle</p>
+               <p class="title"><?php echo $value['titel'] ?></p>
                
-               <p>Datum</p>
+               <p><?php echo $value['datum'] ?></p>
                
-               <img class="afbeelding" src="images/father-and-daughter-find-large-diamond.jpg" alt="Vader en dochter, hand met diamand naast een munt.">
-               <p>There are those who go to the Crater of Diamonds State Park, armed with shovels and buckets and kneepads and maps to spend the day meticulously digging for diamonds.</p>
+               <img class="afbeelding" src="images/<?php echo $value['afbeelding'] ?>" alt="<?php echo $value['afbeeldingBeschrijving'] ?>">
                
-               <a href="http://edition.cnn.com/2016/10/11/travel/arkansas-park-diamond-find-trnd/index.html" >Lees meer</a>
+               <p><?php echo substr( $value['inhoud'], 0, 50 ) ?>...</p>
+               
+               <a href="index.php?id=<?php echo $key ?>" >Lees meer</a>
 
 		    </div>
+		  
+       <?php endforeach ?>
+        </section>
 		
 		
-		<pre><?php print_r( $artikels ) ?></pre>
+		
 		
 		
 		

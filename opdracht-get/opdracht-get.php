@@ -1,5 +1,8 @@
 <?php
     
+
+    
+    
     //de multifunctionele array moet bestaan uit 3 arrays met telkens de info per artikel zodat we bij de foreach elk artikels'info overlopen
     $artikels        =       array(
         
@@ -32,7 +35,26 @@
                                     ); //einde algemene array
 
     
+        $showindividualArticle  =       false;
+        $showOverview           =       true;
+        
 
+
+        //checken of GET variabele id is gesset
+        if( isset( $_GET['id'] ) )
+        {
+            
+            $id =   $_GET['id'];
+            $showindividualArticle  =       true;
+            $showOverview           =       false;
+                
+        }
+
+
+        
+
+        
+    
  
  
 
@@ -46,7 +68,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Opdracht get:</title>
+    <title><?php echo ($showindividualArticle) ? $artikels[$id]['titel'] : "Opdracht get"?></title>
     <link rel="stylesheet" type="text/css" href="http://web-backend.local/css/global.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/directory.css">
 	<link rel="stylesheet" type="text/css" href="http://web-backend.local/css/facade.css">
@@ -78,6 +100,14 @@
             width: 250px;
             
         }
+        
+        
+        .hide
+        {
+            
+            display: none;
+            
+        }
     
     </style>
 	
@@ -87,9 +117,9 @@
 
 	<section class="body">
 
-		<h1>Opdracht get:</h1>
+		<h1><?php echo ($showindividualArticle) ? $artikels[$id]['titel'] : "Opdracht get"?></h1>
 		
-		<h3>De krant van vandaag</h3>
+		<h3><?php echo ($showindividualArticle) ? "Individueel artikel" : "De krant van vandaag"?></h3>
 		
         
         <section>
@@ -98,7 +128,7 @@
             <!--php print_r( $value ): is de array per artikel dus als we een value uit die array willen -> $naamArray(hier $value)['key'] -> value
             -->
         
-		    <div class="bodyArtikel">
+            <div class="bodyArtikel<?php echo ($key != $id) ? " hide" : ""?>">
                
                <p class="title"><?php echo $value['titel'] ?></p>
                
@@ -106,11 +136,11 @@
                
                <img class="afbeelding" src="images/<?php echo $value['afbeelding'] ?>" alt="<?php echo $value['afbeeldingBeschrijving'] ?>">
                
-               <p><?php echo substr( $value['inhoud'], 0, 50 ) ?>...</p>
+               <p><?php echo ($showindividualArticle) ? $value['inhoud'] : substr( $value['inhoud'], 0, 50 ) . "..." ?></p>
                
-               <a href="index.php?id=<?php echo $key ?>" >Lees meer</a>
+               <a href="opdracht-get.php?id=<?php echo $key ?>" class="<?php echo ($showindividualArticle) ? "hide" : ""?>">Lees meer</a>
 
-		    </div>
+            </div>
 		  
        <?php endforeach ?>
         </section>

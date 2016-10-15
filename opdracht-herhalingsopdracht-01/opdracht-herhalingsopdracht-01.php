@@ -1,7 +1,11 @@
 <?php
     
-    $message        =       "";
     $iframe         =       "";
+    $dir            =       "";
+    $link           =       "";
+    $arrayMapInhoud =       array();
+    $noCursus       =       false;
+    $showCursus     =       false;
     
 
 
@@ -14,28 +18,65 @@
         {
             
             case "cursus":
-            $iframe        =       '<iframe src="pdfs/web-backend-cursus.pdf" width="1000px" height="750px"></iframe>';
+            $iframe         =       '<iframe src="pdfs/web-backend-cursus.pdf" width="1000px" height="750px"></iframe>';
+            $showCursus     =       ShowCursus("cursus");
             break;
         
             case "voorbeelden":
             //do something
-            $message        =       "De button 'Voorbeelden' is aangeklikt.";
+            $arrayMapInhoud =       showList( "voorbeelden" );
+            $showCursus     =       ShowCursus("voorbeelden");
             break;
         
             case "opdrachten":
             //do something
-            $message        =       "De button 'Opdrachten' is aangeklikt.";
+            $arrayMapInhoud =       showList( "opdrachten" );
+            $showCursus     =       ShowCursus("opdrachten");
             break;
         
             default:
             //do something
         }
+        
+        
+        
     
     }
     
- 
- 
 
+
+    function showList( $dir )
+    {
+        
+        $arraydir       =       scandir( $dir );
+        
+        return $arraydir;
+        
+        
+    }
+
+
+    function ShowCursus( $link )
+    {
+        
+        if( $link == "cursus" )
+        {
+            
+            return true;
+            
+        }
+        
+        else
+        {
+         
+            return false;
+            
+        }
+        
+    }
+ 
+ 
+           
     
 ?>
 
@@ -60,6 +101,14 @@
             height: 750px;
             border: 1px solid grey;
             
+        }
+        
+        
+        .hide 
+        {
+            
+            display: none;   
+        
         }
     
     </style>
@@ -92,11 +141,20 @@
         
         <h1>Inhoud</h1>
         
-        <div class="iframeholder"><?php echo $iframe ?></div>
+        <div class="iframeholder<?php echo ( $showCursus ) ? "" : " hide" ?>"><?php echo $iframe ?></div>
         
-        <p><?php var_dump($_GET) ?></p>
         
-        <p><?= $message ?></p>
+        <ul>
+        <?php foreach( $arrayMapInhoud as $value ): ?>
+         
+            <li><?= $value ?></li>
+            
+        <?php endforeach ?>
+        </ul>
+
+        
+        
+
 		
 		
 

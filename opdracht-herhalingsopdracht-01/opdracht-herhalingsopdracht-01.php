@@ -1,15 +1,38 @@
 <?php
     
-
+    $message        =       "";
+    $iframe         =       "";
     
-    /*
-    * if( isset( $_GET['link'] ) )
-    *{
-    *
-    *   $link       =       $_GET['link'];
-    *
-    *}
-    */
+
+
+    if( isset( $_GET['link'] ) )
+    {
+    
+        $link       =       $_GET['link'];
+        
+        switch( $link )
+        {
+            
+            case "cursus":
+            $iframe        =       '<iframe src="pdfs/web-backend-cursus.pdf" width="1000px" height="750px"></iframe>';
+            break;
+        
+            case "voorbeelden":
+            //do something
+            $message        =       "Voorbeelden is aangeklikt.";
+            break;
+        
+            case "opdrachten":
+            //do something
+            $message        =       "Opdrachten is aangeklikt.";
+            break;
+        
+            default:
+            //do something
+        }
+    
+    }
+    
  
  
 
@@ -69,11 +92,11 @@
         
         <h1>Inhoud</h1>
         
-        <div class="iframeholder">
-            
-            <p>Hier komt de pdf.</p>
-            
-        </div>
+        <div class="iframeholder"><?php echo $iframe ?></div>
+        
+        <p><?php var_dump($_GET) ?></p>
+        
+        <p><?= $message ?></p>
 		
 		
 

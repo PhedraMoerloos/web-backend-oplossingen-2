@@ -19,12 +19,12 @@
         
             case "voorbeelden":
             //do something
-            $message        =       "Voorbeelden is aangeklikt.";
+            $message        =       "De button 'Voorbeelden' is aangeklikt.";
             break;
         
             case "opdrachten":
             //do something
-            $message        =       "Opdrachten is aangeklikt.";
+            $message        =       "De button 'Opdrachten' is aangeklikt.";
             break;
         
             default:

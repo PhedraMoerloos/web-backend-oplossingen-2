@@ -34,9 +34,9 @@
         
                                     ); //einde algemene array
 
+
     
         $showindividualArticle  =       false;
-        $showOverview           =       true;
         
 
 
@@ -46,7 +46,6 @@
             
             $id =   $_GET['id'];
             $showindividualArticle  =       true;
-            $showOverview           =       false;
                 
         }
 

@@ -4,8 +4,11 @@
     $dir            =       "";
     $link           =       "";
     $arrayMapInhoud =       array();
-    $noCursus       =       false;
     $showCursus     =       false;
+    $arraySearched  =       array();
+    $arrayResultsSearch =   array();
+    $showSearchedItems  =   false;
+    $message        =       "";
     
 
 
@@ -19,19 +22,19 @@
             
             case "cursus":
             $iframe         =       '<iframe src="pdfs/web-backend-cursus.pdf" width="1000px" height="750px"></iframe>';
-            $showCursus     =       ShowCursus("cursus");
+            $showCursus     =       true;
             break;
         
             case "voorbeelden":
             //do something
             $arrayMapInhoud =       showList( "voorbeelden" );
-            $showCursus     =       ShowCursus("voorbeelden");
+            $showCursus     =       false;
             break;
         
             case "opdrachten":
             //do something
             $arrayMapInhoud =       showList( "opdrachten" );
-            $showCursus     =       ShowCursus("opdrachten");
+            $showCursus     =       false;
             break;
         
             default:
@@ -48,7 +51,7 @@
     function showList( $dir )
     {
         
-        $arraydir       =       scandir( $dir );
+        $arraydir           =       scandir( $dir );
         
         return $arraydir;
         
@@ -56,24 +59,65 @@
     }
 
 
-    function ShowCursus( $link )
+
+    function searchFiles( $searchFor )
     {
+    
+        $arrayVoorbeelden   =       scandir( "voorbeelden" );
+        $arrayOpdrachten    =       scandir( "opdrachten" );
         
-        if( $link == "cursus" )
+        $arrayEverything    =       array_merge( $arrayVoorbeelden, $arrayOpdrachten);
+        
+        
+        foreach( $arrayEverything as $value )
         {
             
-            return true;
+            
+            //als de de zoekterm terug vinden in de value van de array, voegen we hem toe aan een nieuwe array met alle gevonden values             die de zoekterm bevatten.
+            if( (strpos( $value, $searchFor ) !== false) )
+            {
+                
+                $arraySearched[] = $value;
+                
+            }
+            
             
         }
         
-        else
+        
+        if( empty($arraySearched) )
         {
-         
-            return false;
+            
+            $message = "Er werden geen zoekresultaten gevonden voor deze zoekterm.";
+            $arraySearched[] = $message;
             
         }
+        
+        
+
+        return $arraySearched;
+            
+
+        
+        
+        
         
     }
+
+
+
+
+    if( isset( $_GET['zoekterm'] ) )    
+    {   
+        
+        $search             =   $_GET['zoekterm'];
+        $arrayResultsSearch =   searchFiles( $search ); 
+        $showSearchedItems  =   true;
+        
+    }
+
+
+    
  
  
            
@@ -144,6 +188,8 @@
         <div class="iframeholder<?php echo ( $showCursus ) ? "" : " hide" ?>"><?php echo $iframe ?></div>
         
         
+        
+        
         <ul>
         <?php foreach( $arrayMapInhoud as $value ): ?>
          
@@ -151,6 +197,25 @@
             
         <?php endforeach ?>
         </ul>
+        
+        
+        
+        
+        <h3<?php echo ( $showSearchedItems ) ? "" : " class='hide'" ?>><?php echo ( $showSearchedItems ) ? "Zoekresultaten voor: '" . $search . "'" : "" ?></h3>
+        
+        
+        <ul>
+        <?php foreach( $arrayResultsSearch as $value ): ?>
+         
+            <li><?= $value ?></li>
+            
+        <?php endforeach ?>
+        </ul>
+        
+        
+        
+
+        
 
         
         

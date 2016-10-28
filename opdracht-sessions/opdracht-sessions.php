@@ -18,56 +18,21 @@
 
 
 
-    if( isset($_GET['focus']) )
-    {
-        
-        $focus      =       $_GET['focus'];
-        
-    }
-
-
-    else
-    {
-     
-        $focus      =       "";
-        
-    }
+    $focus      =   ( isset($_GET['focus']) ) ? $_GET['focus'] : "";
 
 
 
 
     //variabelen al setten op iets zodat ze op de volgende pagina goed weergegeven kunnen worden, anders error, ook voor deze pagina, als het al een waarde heeft --> die tonen, anders gwn "" (niks)
     //email:
-    if( isset( $_SESSION['email'] ) )
-    {
-        
-        $email  =   $_SESSION['email'];
-        
-    }
-
-    else
-    {
-    
-        $email  =   "";
-        
-    }
-
+    $email  =  ( isset( $_SESSION['email'] ) ) ?  $_SESSION['email'] : "";
 
 
     //nickname
-    if( isset( $_SESSION['nickname'] ) )
-    {
-        
-        $nickname  =   $_SESSION['nickname'];
-        
-    }
+    $nickname   =  ( isset( $_SESSION['nickname'] ) ) ? $_SESSION['nickname'] : ""; 
 
-    else
-    {
+
     
-        $nickname  =   "";
-        
-    }
     
 ?>
 
@@ -107,6 +72,9 @@
         
         
         <a href="opdracht-sessions-pagina03-adres.php?sessionstatus=stop">Stop de sessie</a>
+		
+		
+		<p><?php var_dump($_SESSION) ?></p>
 		
 		
 		

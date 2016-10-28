@@ -76,7 +76,7 @@
 		<a href="opdracht-sessions-pagina03-adres.php?sessionstatus=stop">Stop de sessie</a>
 		
 		
-		
+		<p><?php var_dump($_SESSION) ?></p>
 		
 		
 

@@ -16,23 +16,10 @@
     }
 
 
-    if( isset($_GET['focus']) )
-    {
-        
-        $focus      =       $_GET['focus'];
-        
-    }
 
-    else
-    {
-     
-        $focus      =       "";
-        
-    }
+    $focus      =   ( isset($_GET['focus']) ) ? $_GET['focus'] : "";
     
     
-
-
 
 
 
@@ -57,72 +44,21 @@
 
 
 
-    //variabelen al setten --> geen error op volgende pagina
+    //als we rechtstreeks naar deze pagina komen moet er vor $straat bv al een waarde zijn, en we kunnen niet gwn direct $_SESSION['straat'] nemen want als die nog niet geset is (gebeurt pas op de volgende pagina normaal, de inhoud van de post wordt erin gestoken) krijgen we een error.
     //straat:
-    if( isset( $_SESSION['straat'] ) )
-    {
-        
-        $straat  =   $_SESSION['straat'];
-        
-    }
-
-    else
-    {
-    
-        $straat  =   "";
-        
-    }
-
+    $straat     =   ( isset( $_SESSION['straat'] ) ) ? $_SESSION['straat'] : "";
 
 
     //nummer:
-    if( isset( $_SESSION['nummer'] ) )
-    {
-        
-        $nummer  =   $_SESSION['nummer'];
-        
-    }
-
-    else
-    {
-    
-        $nummer  =   "";
-        
-    }
-
+    $nummer     =   ( isset( $_SESSION['nummer'] ) ) ? $_SESSION['nummer'] : "";
 
 
     //gemeente:
-    if( isset( $_SESSION['gemeente'] ) )
-    {
-        
-        $gemeente  =   $_SESSION['gemeente'];
-        
-    }
-
-    else
-    {
-    
-        $gemeente  =   "";
-        
-    }
-
+    $gemeente   =   ( isset( $_SESSION['gemeente'] ) ) ? $_SESSION['gemeente'] : "";
 
 
     //postcode:
-    if( isset( $_SESSION['postcode'] ) )
-    {
-        
-        $postcode  =   $_SESSION['postcode'];
-        
-    }
-
-    else
-    {
-    
-        $postcode  =   "";
-        
-    }
+    $postcode   =   ( isset( $_SESSION['postcode'] ) ) ? $_SESSION['postcode'] : "";
 
 
 
@@ -184,7 +120,9 @@
 		
 		<a href="opdracht-sessions-pagina02-adres.php?sessionstatus=stop">Stop de sessie</a>
 		
+		<p><?php var_dump($_SESSION) ?></p>
 		
+
 		
 		
 		

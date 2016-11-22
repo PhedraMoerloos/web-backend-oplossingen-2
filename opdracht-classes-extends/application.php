@@ -27,6 +27,9 @@
   $Simba    =   new Lion('Simba', 'male', 150, 'Congo lion');
   $Scar     =   new Lion('Scar', 'male', 140, 'Kenia lion');
 
+  $Zeke     =   new Zebra('Zeke', 'male', 80, 'Quagga');
+  $Zana     =   new Zebra('Zana', 'female', 85, 'Selous');
+
 
  ?>
 
@@ -46,6 +49,10 @@
 
      <p>De speciale move van <?= $Simba->getName() ?> is: <?= $Simba->doSpecialMove() ?> (soort: <?= $Simba->getSpecies() ?>) </p>
      <p>De speciale move van <?= $Scar->getName() ?> is: <?= $Scar->doSpecialMove() ?> (soort: <?= $Scar->getSpecies() ?>) </p>
+
+     <p>De speciale move van <?= $Zeke->getName() ?> is: <?= $Zeke->doSpecialMove() ?> (soort: <?= $Zeke->getSpecies() ?>) </p>
+     <p>De speciale move van <?= $Zana->getName() ?> is: <?= $Zana->doSpecialMove() ?> (soort: <?= $Zana->getSpecies() ?>) </p>
+
 
    </body>
  </html>

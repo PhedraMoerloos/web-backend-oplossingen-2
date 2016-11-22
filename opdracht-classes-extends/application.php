@@ -24,6 +24,9 @@
   $healthDolphin  =   $dolphin->getHealth();*/
   //geeft errors als ik deze variabelen in html zet
 
+  $Simba    =   new Lion('Simba', 'male', 150, 'Congo lion');
+  $Scar     =   new Lion('Scar', 'male', 140, 'Kenia lion');
+
 
  ?>
 
@@ -39,6 +42,10 @@
      <p><?= $cat->getName() ?> is een <?= $cat->getGender() ?> en heeft <?= $cat->getHealth() ?> health. (Special move: <?= $cat->doSpecialMove() ?>)</p>
      <p><?= $dog->getName() ?> is een <?= $dog->getGender() ?> en heeft <?= $dog->getHealth() ?> health. (Special move: <?= $cat->doSpecialMove() ?>)</p>
      <p><?= $dolphin->getName()?> is een <?= $dolphin->getGender() ?> en heeft <?= $dolphin->getHealth() ?> health. (Special move: <?= $cat->doSpecialMove() ?>)</p>
+
+
+     <p>De speciale move van <?= $Simba->getName() ?> is: <?= $Simba->doSpecialMove() ?> (soort: <?= $Simba->getSpecies() ?>) </p>
+     <p>De speciale move van <?= $Scar->getName() ?> is: <?= $Scar->doSpecialMove() ?> (soort: <?= $Scar->getSpecies() ?>) </p>
 
    </body>
  </html>

@@ -19,6 +19,8 @@ $hundred     =    $percent->hundred;
 $nominal     =    $percent->nominal;
 
 
+
+
  ?>
 
  <!DOCTYPE html>

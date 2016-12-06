@@ -1,2 +1,12 @@
 [17:51:09 30/11/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:07:03 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:23:45 6/12/16] - 127.0.0.1 - type:[error] De kortingscode heeft niet de juiste lengte
+[14:35:22 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:37:20 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:38:02 6/12/16] - 127.0.0.1 - type:[error] De kortingscode heeft niet de juiste lengte
+[14:38:07 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:38:43 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:40:57 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:40:58 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
+[14:41:00 6/12/16] - 127.0.0.1 - type:[error] Er werd met het formulier geknoeid
 

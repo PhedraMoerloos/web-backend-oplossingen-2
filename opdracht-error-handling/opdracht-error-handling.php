@@ -18,19 +18,24 @@
 
         }
 
-
-        if ( strlen( $_POST["code"] ) == 8 ) {
-
-          $isValid    =   true;
-
-        }
-
+        //als kortingscode wel is ingevuld
         else {
 
-          throw new Exception("VALIDATION-CODE-LENGTH");
+          if ( strlen( $_POST["code"] ) == 8 ) {
 
+            $isValid    =   true;
+
+          }
+
+          else {
+
+            throw new Exception("VALIDATION-CODE-LENGTH");
+
+
+          }
 
         }
+
 
     }
 
@@ -60,13 +65,14 @@
           break;
       }
 
+      logToFile( $message );
+
+      //als wel iets is ingevuld maar niet 8 cijfers
       if ( $createMessage ) {
 
         createMessage( $message );
 
       }
-
-      logToFile( $message );
 
       $messageShow  =   showMessage();
 
@@ -95,17 +101,27 @@
 
   function showMessage(){
 
-    $messageShow    =   $_SESSION[ 'message' ][ 'message' ];
+    /*$session kan leeg zijn als unset geweest is of nog niks in
+    *--> eerst via isset checken voor je hem in variabele wilt steken,
+    anders error*/
+    if ( isset($_SESSION[ 'message' ]) ) {
 
-    if !($messageShow) {
+      $messageShow    =   $_SESSION[ 'message' ][ 'message' ];
+      //mag volledig unset worden
+      unset($_SESSION[ 'message' ]);
 
-      return false;
+    }
+
+
+    if ( isset( $messageShow ) ) {
+
+      return $messageShow;
 
     }
 
     else {
 
-      return $messageShow;
+      return false;
 
     }
 
@@ -127,32 +143,40 @@
     <title>Error handling</title>
   </head>
 
-  <style>
-
-    .hide{
-
-      display: none;
-
-    }
-
-  </style>
-
   <body>
 
     <h2>Geef uw kortingscode op</h2>
 
-    <p><?php echo $messageShow ?></p>
+    <?php if ( isset( $messageShow ) ): ?>
 
-    <form class="<?php echo ( $isValid )? "hide" : ""?>"action="opdracht-error-handling.php" method="post">
+        <p><?php echo $messageShow ?></p>
 
-        <label for="code">Kortingscode</label>
-        <input type="text" name="code" id="code">
+    <?php endif ?>
 
-        <input type="submit" name="submit" value="Verzenden">
 
-    </form>
 
-    <p><?php echo ( $isValid )? "Korting toegekend!" : ""?></p>
+
+    <?php if ( $isValid ): ?>
+
+        <p>Korting toegekend!</p>
+
+
+    <?php else : ?>
+
+      <form action="opdracht-error-handling.php" method="post">
+
+          <label for="code">Kortingscode</label>
+          <input type="text" name="code" id="code">
+
+          <input type="submit" name="submit" value="Verzenden">
+
+      </form>
+
+
+    <?php endif ?>
+
+
+
 
   </body>
 </html>

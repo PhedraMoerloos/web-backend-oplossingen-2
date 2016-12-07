@@ -1,6 +1,6 @@
 <?php
 
-  $message =  "";
+  $message      =  "";
 
   try {
 
@@ -9,17 +9,17 @@
 
       $db   =   new PDO( "mysql:host=localhost;dbname=bieren", "root", "BackendP2016" );
 
-      $brnaam = $_POST['brnaam'];
-      $adres = $_POST['adres'];
+      $brnaam   = $_POST['brnaam'];
+      $adres    = $_POST['adres'];
       $postcode = $_POST['postcode'];
       $gemeente = $_POST['gemeente'];
-      $omzet = $_POST['omzet'];
+      $omzet    = $_POST['omzet'];
 
 
       try {
 
-        $query  = "INSERT INTO bieren(brnaam, adres, postcode, gemeente, omzet)
-                  VALUES(:brnaam, :adres, :postcode, :gemeente, :omzet)";
+        $query  = 'INSERT INTO brouwers (brnaam, adres, postcode, gemeente, omzet)
+  										VALUES ( :brnaam, :adres, :postcode, :gemeente, :omzet )';
 
         $statement   = $db->prepare($query);
 
@@ -29,13 +29,17 @@
         $statement->bindValue(":gemeente", $gemeente);
         $statement->bindValue(":omzet", $omzet);
 
+        //eerst gwn if $statement->execute() == true --> .. maar dan
+        //voeg 2 x toe --> proberen in variabele te steken, voegt 1x toe
+        $test =   $statement->execute();
 
-        $statement->execute();
+        //als bewijs is dat het is toegevoegd aan tabel brouwers --> message geven + id tonen
+        if ( $test ) {
 
+          $insertId = $db->lastInsertId();
+          $message  = "Brouwerij succesvol toegevoegd. Het unieke nummer van deze brouwerij is " . $insertId;
 
-        $insertId = $db->lastInsertId();
-
-        $message  = "Brouwerij succesvol toegevoegd. Het unieke nummer van deze brouwerij is " . $insertId;
+        }
 
 
 
@@ -50,7 +54,7 @@
 
 
 
-  } catch PDOException $e) {
+  } catch (PDOException $e) {
 
       $message  = "Connectie is mislukt, " . $e->getMessage();
 
@@ -69,9 +73,15 @@
    </head>
    <body>
 
+     <?php if ($message): ?>
+
+       <?= $message ?>
+
+     <?php endif ?>
+
      <h2>Voeg een brouwer toe:</h2>
 
-     <form action="opdracht-crud-insert" method="post">
+     <form action="opdracht-crud-insert.php" method="post">
 
        <label for="brnaam">Brouwernaam:</label>
        <input type="text" name="brnaam" id="brnaam">

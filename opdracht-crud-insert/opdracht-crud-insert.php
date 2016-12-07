@@ -7,7 +7,7 @@
 
     if ( isset($_POST['submit'] )) {
 
-      $db   =   new PDO( "mysql:host=localhost;dbname=bieren", "root", "root" );
+      $db   =   new PDO( "mysql:host=localhost;dbname=bieren", "root", "BackendP2016" );
 
       $brnaam = $_POST['brnaam'];
       $adres = $_POST['adres'];

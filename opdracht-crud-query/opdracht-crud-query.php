@@ -6,37 +6,50 @@ $message          =   "";
 try {
 
 
-    $db           =   new PDO("mysql:host=localhost;dbname=bieren", "root", "root");
+    $db           =   new PDO("mysql:host=localhost;dbname=bieren", "root", "BackendP2016");
 
 
-    $startName    =   "du";
-    $brouwerName  =   "a";
+    /*$query        =   "SELECT *
+                      FROM bieren
+                      INNER JOIN brouwers
+                      ON bieren.brouwernr = brouwers.brouwernr
+                      WHERE bieren.naam LIKE :startName AND brouwers.brnaam LIKE :brouwerName";
+
+    $statement     =   $db->prepare($query);
+
+    $statement->bindValue( ':startName', 'du%' );
+    $statement->bindValue( ':brouwerName', '%a' );*/
 
     $query        =   "SELECT *
                       FROM bieren
                       INNER JOIN brouwers
                       ON bieren.brouwernr = brouwers.brouwernr
-                      WHERE bieren.naam LIKE startName% AND bieren.braam LIKE %brouwerName%";
+                      WHERE bieren.naam LIKE 'du%' AND brouwers.brnaam LIKE '%a%'";
 
     $statement     =   $db->prepare($query);
 
-    $statement->bindValue("startName%", $startName);
-    $statement->bindValue("%brouwerName%", $brouwerName);
+
 
     $statement->execute();
 
-    //alles uit tabel bieren halen volgens de query, nu in associated array steken
-    //kolomnaam => value, value telkens
-    $assocArray    =    array();
-    while ( $rij = $statement->fetch(PDO::FETCH_ASSOC) ) {
+    /*uit query krijgen we 4 resultaten, 4 rijen met values. Per rij -->
+    * entry maken. [0] --> 1ste resultaat van query,[1] = tweede,...
 
-      $assocArray[] = $rij;
+    *associatieve array want dan kunnen we binnen zo een index [0] bv -->
+    kolomnaam => value doen */
+    $assocArray    =    array();
+    while ( $queryResult = $statement->fetch(PDO::FETCH_ASSOC) ) {
+
+      $assocArray[] = $queryResult;
 
     }
 
-    //telkens de eerste index van de associated array = kolomnaam
+    //eerste kolomnaam komt niet uit de query --> nummering
     $kolomnaamArray = array();
-    foreach ($assocArray[0] as $kolomnaam => $bierSoort) {
+    $kolomnaamArray[] = "#";
+    //kunnen de eerste entry pakken als voorbeeld, kolomnamen zijn toch
+    //overal hetzelfde, evengoed $assocArray[1] kunnen pakken
+    foreach ($assocArray[0] as $kolomnaam => $waardenKolom) {
 
       $kolomnaamArray[] = $kolomnaam;
 
@@ -44,7 +57,7 @@ try {
 
 
 
-    $message       =    "Connectie maken gelukt";
+    //$message       =    "Connectie maken gelukt";
 
 
 } catch (PDOException $e) {
@@ -70,22 +83,32 @@ try {
 
      <?php endif ?>
 
+
+
+
      <table>
 
        <thead>
-         <tr>
 
+         <tr>
            <?php foreach ($kolomnaamArray as $kolomnaam): ?>
              <th><?php echo $kolomnaam?></th>
             <?php endforeach ?>
-
          </tr>
+
        </thead>
 
        <tbody>
-          <?php foreach ($assocArray as $kolomnaam => $bier): ?>
+          <?php foreach ($assocArray as $indexNr => $queryResult): ?>
           <tr>
-            <td><?= $bier ?></td>
+            <td><?= $indexNr + 1 ?></td>
+
+            <?php foreach ($queryResult as $kolomnaam => $value): ?>
+
+              <td><?= $value ?></td>
+
+            <?php endforeach ?>
+
           </tr>
 
           <?php endforeach ?>

@@ -6,7 +6,7 @@ function __autoload( $class ){
 
 }
 
-__autoload('Percent');
+
 
 $new         =    150;
 $unit        =    100;

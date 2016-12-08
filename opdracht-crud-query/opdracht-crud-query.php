@@ -9,17 +9,6 @@ try {
     $db           =   new PDO("mysql:host=localhost;dbname=bieren", "root", "BackendP2016");
 
 
-    /*$query        =   "SELECT *
-                      FROM bieren
-                      INNER JOIN brouwers
-                      ON bieren.brouwernr = brouwers.brouwernr
-                      WHERE bieren.naam LIKE :startName AND brouwers.brnaam LIKE :brouwerName";
-
-    $statement     =   $db->prepare($query);
-
-    $statement->bindValue( ':startName', 'du%' );
-    $statement->bindValue( ':brouwerName', '%a' );*/
-
     $query        =   "SELECT *
                       FROM bieren
                       INNER JOIN brouwers

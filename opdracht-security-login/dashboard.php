@@ -52,7 +52,7 @@
 
           else {
 
-            
+            unset( $_COOKIE['login'] );
             header( 'location: login-form.php' );
 
           }

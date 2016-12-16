@@ -28,12 +28,108 @@
   }
 
 
+
+
+
+
   //als men op registreer knop drukt
   if ( isset($_POST["register"]) ) {
 
+      //variabelen uit session wissen (wachtwoord, email)
       session_destroy();
 
-  }
+      //nieuwe session starten
+      session_start();
+
+      if ( isset($_POST["email"]) ) {
+
+          $email = $_POST["email"];
+
+          //testen of email geldig is
+          if ((filter_var($email, FILTER_VALIDATE_EMAIL))) {
+
+              //email is valid, we gaan verder
+              $_SESSION['notification'] = "";
+
+              //checken of email in database voorkomt
+              try {
+
+                $db     =  new PDO("mysql:host=localhost;dbname=opdracht-security-login", "root", "BackendP2016");
+
+                $queryCheckMail   = "SELECT * FROM users
+                                    WHERE email = :emailmeegegeven";
+
+                $statementCheckMail = $db->prepare( $queryCheckMail );
+                $statementCheckMail->bindValue( ":emailmeegegeven", $email );
+
+                $userWithMailFound = $statementCheckMail->execute();
+
+                if ( $userWithMailFound ) {
+
+                  //na query uitvoeren, inhoud van resultaat query bekijken (leeg/niet leeg)
+                  $arrayUsersFound  = array();
+                  while ( $queryUserFound =  $statementCheckMail->fetch(PDO::FETCH_ASSOC)) {
+
+                      $arrayUsersFound[] = $queryUserFound;
+
+                  }
+
+                  if ( empty($arrayUsersFound) ) {
+
+                    //resultaat van de query was leeg --> nog niemand heeft dit email adres
+                    $_SESSION['notification'] = "Dit emailadres komt nog niet voor in onze database, jeej!.";
+                    header( 'location: opdracht-security-login.php' );
+
+                  }
+
+                  else {
+
+                    $_SESSION['notification'] = "Dit emailadres komt reeds voor in onze database.";
+                    header( 'location: opdracht-security-login.php' );
+
+                  }
+
+
+
+                } //einde succesvol uitvoeren query select
+
+                else {
+                  //query select uitvoeren is niet gelukt
+                }
+
+
+
+
+
+              } catch (Exception $e) {
+
+                  //verbinging niet gelukt, foutboodschap + redirect registreerpagina
+                  $_SESSION['notification'] = "Kon geen verbinding maken met de database. Probeer opnieuw.";
+                  header( 'location: opdracht-security-login.php' );
+
+              }
+
+
+
+
+
+
+          }
+
+          else {
+
+            //email Invalid -> notificatie + redirect naar registreer pagina
+            $_SESSION['notification'] = "Het email adres is ongeldig, vul je gegevens opnieuw in.";
+            header( 'location: opdracht-security-login.php' );
+
+          }//einde validatie email
+
+
+      }//einde email isset
+
+
+
+  }//einde registreer knop
 
 
 

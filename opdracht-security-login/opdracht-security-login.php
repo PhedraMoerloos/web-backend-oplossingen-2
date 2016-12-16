@@ -2,6 +2,8 @@
 
   session_start();
 
+  $notification =  ( isset( $_SESSION['notification'] ) ) ?  $_SESSION['notification'] : "";
+
   $email      =    ( isset( $_SESSION['email'] ) ) ?  $_SESSION['email'] : "";
 
   $wachtwoord =    ( isset( $_SESSION['wachtwoord'] ) ) ?  $_SESSION['wachtwoord'] : "";
@@ -19,6 +21,9 @@
    </head>
    <body>
 
+      <?php if ( $notification ): ?>
+        <?= $notification ?>
+      <?php endif; ?>
 
      <h2>Registreren:</h2>
 

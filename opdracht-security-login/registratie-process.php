@@ -44,6 +44,7 @@
       if ( isset($_POST["email"]) ) {
 
           $email = $_POST["email"];
+          $wachtwoord = $_POST["wachtwoord"];
 
           //testen of email geldig is
           if ((filter_var($email, FILTER_VALIDATE_EMAIL))) {
@@ -77,8 +78,59 @@
                   if ( empty($arrayUsersFound) ) {
 
                     //resultaat van de query was leeg --> nog niemand heeft dit email adres
-                    $_SESSION['notification'] = "Dit emailadres komt nog niet voor in onze database, jeej!.";
-                    header( 'location: opdracht-security-login.php' );
+                    //toevoegen aan database
+                    try {
+
+
+                      //variabelen (email en wachtwoord uit form bovenaan)
+                      $randomSalt         =  uniqid(mt_rand(), true);
+                      $wachtwoordPlusSalt =  $wachtwoord . $randomSalt;
+                      $wachtwoordSalted   =  hash( 'sha512', $wachtwoordPlusSalt );
+                      $lastlogin          =  "NOW()";
+
+
+
+                      $queryInsertUser    = "INSERT INTO users (email, password, salt, lastlogin)
+                                            VALUES ( :email, :password, :salt, :lastlogin )";
+
+                      $statementInsertUser = $db->prepare( $queryInsertUser );
+
+                      $statementInsertUser->bindValue(":email", $email);
+                      $statementInsertUser->bindValue(":password", $wachtwoordSalted);
+                      $statementInsertUser->bindValue(":salt", $randomSalt);
+                      $statementInsertUser->bindValue(":lastlogin", $lastlogin);
+
+                      $userIsAdded  =   $statementInsertUser->execute();
+
+                      if ( $userIsAdded ) {
+
+
+                          $valueCookie  =  $email . ',' . hash( 'sha512', $email . $randomSalt );
+                          setcookie( 'login', $valueCookie, time() + 360 );
+
+                          header( 'location: dashboard.php' );
+
+
+
+                      }
+
+
+                    } catch (Exception $e) {
+
+                      $_SESSION['notification'] = "De user kon niet toegevoegd worden. Probeer opnieuw.";
+                      header( 'location: opdracht-security-login.php' );
+
+                    }
+
+
+
+
+
+
+
+
+
+
 
                   }
 

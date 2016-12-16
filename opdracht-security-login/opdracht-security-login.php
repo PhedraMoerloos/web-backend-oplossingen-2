@@ -25,6 +25,7 @@
         <?= $notification ?>
       <?php endif; ?>
 
+
      <h2>Registreren:</h2>
 
      <form action="registratie-process.php" method="post">
@@ -32,8 +33,8 @@
         <label for="email">Email:</label>
         <input type="text" name="email" value="<?= $email ?>">
 
-        <label for="paswoord">Paswoord:</label>
-        <input type="text" name="paswoord" value="<?= $wachtwoord ?>">
+        <label for="wachtwoord">Paswoord:</label>
+        <input type="text" name="wachtwoord" value="<?= $wachtwoord ?>">
         <input type="submit" name="generatePassword" value="Genereer wachtwoord">
 
         <input type="submit" name="register" value="Registreer">

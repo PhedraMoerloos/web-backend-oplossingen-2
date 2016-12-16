@@ -42,9 +42,9 @@ class Animal
 
   public function changeHealth( $healthPoints ) {
 
-    $currentHealth  =   $this->health + $healthPoints;
+    $this->health = $this->health + $healthPoints;
 
-    return $currentHealth;
+    return $this->health;
 
   }
 

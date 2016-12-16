@@ -25,7 +25,7 @@ try {
     * entry maken. [0] --> 1ste resultaat van query,[1] = tweede,...
 
     *associatieve array want dan kunnen we binnen zo een index [0] bv -->
-    kolomnaam => value doen */
+    kolomnaam => value telkens doen */
     $assocArray    =    array();
     while ( $queryResult = $statement->fetch(PDO::FETCH_ASSOC) ) {
 
@@ -73,6 +73,12 @@ try {
      <?php endif ?>
 
 
+     <?php if ($assocArray): ?>
+
+       <?php var_dump($assocArray) ?>
+
+     <?php endif ?>
+
 
 
      <table>
@@ -88,11 +94,12 @@ try {
        </thead>
 
        <tbody>
-          <?php foreach ($assocArray as $indexNr => $queryResult): ?>
+          <?php foreach ($assocArray as $indexNr => $rijInhoudArray): ?>
+
           <tr>
             <td><?= $indexNr + 1 ?></td>
 
-            <?php foreach ($queryResult as $kolomnaam => $value): ?>
+            <?php foreach ($rijInhoudArray as $kolomnaam => $value): ?>
 
               <td><?= $value ?></td>
 

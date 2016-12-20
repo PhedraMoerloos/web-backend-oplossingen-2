@@ -3,6 +3,7 @@
  $message = "";
  $imageExt = "";
  $source = "";
+ $imageName = "";
  //beginpunten voor crop, als ze niet moeten aangepast worden is het gewoon 0
  $xCoordinateSource = 0;
  $yCoordinateSource = 0;
@@ -90,14 +91,18 @@
             	{
 
             		case ('jpeg'):
-            			$imageResized 	= 	imagejpeg($canvas, ("thumb-" . $imageName. $imageExt), 100);
+                case ('jpg'):
+            			$imageResized 	= 	imagejpeg($canvas, ("thumb-" . $imageName . "." . $imageExt), 100);
             			break;
 
             		case ('png'):
-            			$imageResized 	=	  imagepng($canvas, ("thumb-" . $imageName. $imageExt), 100);
+            			$imageResized 	=	  imagepng($canvas, ("thumb-" . $imageName . "." . $imageExt), 100);
             			break;
 
             	}
+
+
+              move_uploaded_file( $imageResized, ($location . "/img/" . ("thumb-" . $imageName. $imageExt)) );
 
 
 
@@ -142,10 +147,6 @@
        <?= $message ?>
      <?php endif; ?>
 
-     <?php if ($imageExt): ?>
-       <?php var_dump($imageExt) ?>
-     <?php endif; ?>
-
      <?php if ($xCoordinateSource): ?>
        <?php var_dump($xCoordinateSource) ?>
      <?php endif; ?>
@@ -162,6 +163,11 @@
        <input type="submit" name="submit" value="Verzenden">
 
      </form>
+
+     <?php if ($imageName): ?>
+       <img src="thumb-<?= $imageName ?>.jpg">
+     <?php endif; ?>
+
 
 
    </body>

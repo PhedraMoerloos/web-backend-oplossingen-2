@@ -29,7 +29,7 @@
 
      <h2>Contacteer ons:</h2>
 
-     <form action="contact.php" method="post">
+     <form id="contactform" action="contact.php" method="post">
 
        <label for="email">Emailadres:</label><br>
        <input type="text" id="email" name="email" value="<?= $email ?>"><br>
@@ -43,6 +43,41 @@
 
      </form>
 
+
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+     <script>
+
+ 			$( document ).ready(function(){
+
+ 				$('#contactform').submit(function(){
+
+ 					var postVar = $('#contactform').serialize();
+
+          //ajax call
+ 					$.ajax({
+
+ 						type: "POST",
+ 						url: "contact-api.php",
+ 						data: postVar,
+ 						success: function(roughDataPhp) {
+
+                    //JSON.parse om json te decoderen naar javascript
+ 										var dataJs = JSON.parse(roughDataPhp);
+
+ 										}
+
+ 									}//einde succes functie
+
+ 						})//einde ajax call
+
+          //opt einde return false --> handelen form af via ajax
+ 					return false;
+
+ 				})//einde submit functie
+
+ 			})
+ 		</script>
 
    </body>
  </html>

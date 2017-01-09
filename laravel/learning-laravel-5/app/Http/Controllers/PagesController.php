@@ -26,11 +26,22 @@ class PagesController extends Controller
       ]);*/
 
 
-      $data = array('firstName' => "Phedra",
+      /*$data = array('firstName' => "Phedra",
                     'lastName'  => "Moerloos");
 
-      return view('pages.about', $data);
+       een associatieve array zoals deze wilt hij wel doorgeven door gewoon, $data bij view() te zetten
+       maar een gewone array doet hij enkel via compact()*/
 
+      $people = ['Thessa', 'Sarah', 'Luna', 'Demi', 'Lukas'];
+
+      return view('pages.about', compact('people'));
+
+
+    }
+
+    public function contact() {
+
+      return view('pages.contact');
 
     }
 

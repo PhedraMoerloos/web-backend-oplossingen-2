@@ -7,6 +7,7 @@
   </head>
   <body>
 
+    <!-- Hier navigatie bovenaan plaatsen -->
 
     <div class="container">
 

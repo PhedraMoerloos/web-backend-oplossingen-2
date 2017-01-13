@@ -26,7 +26,7 @@ Route::get('articles', 'ArticlesController@index');
 
 //\create moet boven de {id} want anders gaat hij hier altijd naartoe, aangezien \iets triggert die functie, dus ook "\create"
 Route::get('articles/create', 'ArticlesController@createArticle');
-//Route::get('articles/{id}', 'ArticlesController@showArticle');
+Route::get('articles/{id}', 'ArticlesController@showArticle');
 //{id} --> alles dat na de \ komt, id is gwn naam die we hieraan geven --> wat na \ komt wordt dan opgeslagen in id
 
 

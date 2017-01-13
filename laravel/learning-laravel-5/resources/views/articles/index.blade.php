@@ -10,12 +10,24 @@
 
       <h2>
         <!-- kan ook op andere manieren, maar hier ga je dan gwn naar controller en voer je de view uit met de juiste id meegegeven om te tonen -->
-        <a href="{{ action('ArticlesController@showArticle', [$article->id]) }}">{{ $article->title }}</a>
+        <a href="
+
+        @if($article->url != "")
+
+          {{ $article->url }}
+
+        @else
+
+          {{ action('ArticlesController@showArticle', [$article->id]) }}
+
+        @endif
+
+        " target="_blank">{{ $article->title }}</a>
       </h2>
 
       <div class="body">
 
-        {{ $article->body }}
+        {{ $article->text }}
 
       </div>
 

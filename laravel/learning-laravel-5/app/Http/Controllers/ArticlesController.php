@@ -8,19 +8,20 @@ use App\Http\Requests;
 
 use Carbon\Carbon;
 
+use App\Article;
+
 class ArticlesController extends Controller
 {
     public function index() {
 
-      return 'Show all articles';
-
       //articles erin gezet via eloquent
 
-      //$articles = \App\Article::all(); = ok maar we willen de laatst toegevoegde als eerste tonen
-      $articles = \App\Article::latest('published_at')->get();
+      $articles = Article::all();
+      //= ok maar we willen de laatst toegevoegde als eerste tonen
 
-      //geeft dan json terug met array van alle artikels
+      //$articles = \App\Article::latest('published_at')->get();
 
+      //view laden voor overzicht articles en de json array van alle articles meegeven
       return view('articles.index', compact('articles'));
 
     }

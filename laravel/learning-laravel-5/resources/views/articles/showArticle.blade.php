@@ -4,13 +4,16 @@
 
 @section('content')
 
+
   <h1>{{ $article->title }}</h1>
 
   <div class="body">
 
-    {{ $article->body }}
+    {{ $article->text }}
 
   </div>
+
+  <!-- comment form? -->
 
 
 @stop

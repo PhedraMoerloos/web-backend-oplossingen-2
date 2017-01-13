@@ -11,7 +11,8 @@ class Comment extends Model
 
         'comment',
         'id_article',
-        'commented_at'
+        'commented_at',
+        'by'
 
     ];
 

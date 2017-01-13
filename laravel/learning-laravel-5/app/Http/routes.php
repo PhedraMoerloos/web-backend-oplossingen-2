@@ -24,6 +24,8 @@ Route:: get('contact', 'PagesController@contact');
 
 Route::get('articles', 'ArticlesController@index');
 
+Route::get('comments/{id_article}', 'CommentsController@index');
+
 //\create moet boven de {id} want anders gaat hij hier altijd naartoe, aangezien \iets triggert die functie, dus ook "\create"
 Route::get('articles/create', 'ArticlesController@createArticle');
 Route::get('articles/{id}', 'ArticlesController@showArticle');

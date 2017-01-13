@@ -1,38 +1,71 @@
 @extends('app')
 
+
+
+
 @section('content')
 
   <h1>Articles</h1>
 
-  <!-- kunnen aan de articles variabele van eloquent nu -> json overzicht van artikels in database-->
-  @foreach( $articles as $article )
-    <article>
 
-      <h2>
-        <!-- kan ook op andere manieren, maar hier ga je dan gwn naar controller en voer je de view uit met de juiste id meegegeven om te tonen -->
-        <a href="
 
-        @if($article->url != "")
+  <ol>
 
-          {{ $article->url }}
 
-        @else
+      <!-- kunnen aan de articles variabele van eloquent nu -> json overzicht van artikels in database-->
+      @foreach( $articles as $article )
 
-          {{ action('ArticlesController@showArticle', [$article->id]) }}
+        <li>
 
-        @endif
+          <p class="title-closer">
+            <!-- kan ook op andere manieren, maar hier ga je dan gwn naar controller en voer je de view uit met de juiste id meegegeven om te tonen -->
+            <a href="
 
-        " target="_blank">{{ $article->title }}</a>
-      </h2>
+            @if($article->url != "")
 
-      <div class="body">
+              {{ $article->url }}
 
-        {{ $article->text }}
+            @else
 
-      </div>
+              {{ action('ArticlesController@showArticle', [$article->id]) }}
 
-    </article>
-  @endforeach
+            @endif
+
+            " target="_blank">{{ $article->title }}</a>
+          </p>
+
+
+
+          
+
+          <p class="small-grey">
+
+            points by {{ $article->made_by }} |
+
+            <a href="#">hide</a>
+             |
+
+            <a href="{{ action('CommentsController@index', [$article->id]) }}">
+
+              @if(count($comments) == 1)
+
+                1 comment</a>
+
+              @else
+
+                {{ count($comments) }} comments</a>
+
+              @endif
+
+          </p>
+
+        </li>
+
+
+      @endforeach
+
+  </ol>
+
 
 
 @stop

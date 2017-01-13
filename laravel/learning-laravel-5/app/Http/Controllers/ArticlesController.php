@@ -10,19 +10,20 @@ use Carbon\Carbon;
 
 use App\Article;
 
+use App\Comment;
+
 class ArticlesController extends Controller
 {
     public function index() {
 
       //articles erin gezet via eloquent
 
-      $articles = Article::all();
-      //= ok maar we willen de laatst toegevoegde als eerste tonen
+      $articles = Article::latest('published_at')->get();
 
-      //$articles = \App\Article::latest('published_at')->get();
+      $comments = Comment::all();
 
       //view laden voor overzicht articles en de json array van alle articles meegeven
-      return view('articles.index', compact('articles'));
+      return view('articles.index', compact('articles', 'comments'));
 
     }
 
@@ -30,13 +31,18 @@ class ArticlesController extends Controller
     public function showArticle( $id )
     {
 
-      $article = \App\Article::findorFail( $id );
+      $article = Article::findorFail( $id );
 
       //als id niet bestaat die je opvraagt --> view met oops something went wrong fzo tonen --> findorFail
 
       return view('articles.showArticle', compact('article'));
 
     }
+
+
+
+    
+
 
 
 

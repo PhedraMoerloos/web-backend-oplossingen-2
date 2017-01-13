@@ -13,7 +13,8 @@ class Article extends Model
         'title',
         'url',
         'text',
-        'published_at'
+        'published_at',
+        'made_by'
 
     ];
 

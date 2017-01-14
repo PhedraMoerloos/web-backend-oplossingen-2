@@ -14,7 +14,8 @@ class Article extends Model
         'url',
         'text',
         'published_at',
-        'made_by'
+        'made_by',
+        'hide'
 
     ];
 

@@ -36,13 +36,12 @@
 
 
 
-          
 
           <p class="small-grey">
 
             points by {{ $article->made_by }} |
 
-            <a href="#">hide</a>
+            <a href="{{ action('ArticlesController@hideArticle', [$article->id]) }}">hide</a>
              |
 
             <a href="{{ action('CommentsController@index', [$article->id]) }}">

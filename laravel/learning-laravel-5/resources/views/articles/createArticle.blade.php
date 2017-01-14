@@ -19,11 +19,35 @@
       </div>
 
 
+
       <div class="form-group">
 
         <!-- name attribuut waarde, default value, extra attributen die je wilt toepassen zoals class -->
-        {!! Form::label('body', 'Body:') !!}
-        {!! Form::textarea('body', null, ['class' => 'form-control']) !!}
+        {!! Form::label('url', 'Url:') !!}
+        {!! Form::text('url', null, ['class' => 'form-control']) !!}
+
+      </div>
+
+
+      <p>or</p>
+
+
+
+      <div class="form-group">
+
+        <!-- name attribuut waarde, default value, extra attributen die je wilt toepassen zoals class -->
+        {!! Form::label('text', 'Text:') !!}
+        {!! Form::textarea('text', null, ['class' => 'form-control']) !!}
+
+      </div>
+
+      <!-- Dit wordt op een bepaald moment automatisch ingevuld-->
+
+      <div class="form-group">
+
+        <!-- name attribuut waarde, default value, extra attributen die je wilt toepassen zoals class -->
+        {!! Form::label('made_by', 'Made by:') !!}
+        {!! Form::text('made_by', null, ['class' => 'form-control']) !!}
 
       </div>
 

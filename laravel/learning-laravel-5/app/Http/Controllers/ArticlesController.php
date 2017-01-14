@@ -18,7 +18,7 @@ class ArticlesController extends Controller
 
       //articles erin gezet via eloquent
 
-      $articles = Article::latest('published_at')->get();
+      $articles = Article::latest('published_at')->where('hide', '==', '0')->get();
 
       $comments = Comment::all();
 
@@ -40,8 +40,28 @@ class ArticlesController extends Controller
     }
 
 
+    public function hideArticle( $id )
+    {
 
-    
+      $article = Article::findorFail( $id );
+
+      $article->hide = 1;
+
+      $article->save();
+
+
+
+      $articles = Article::latest('published_at')->where('hide', '==', '0')->get();
+
+      $comments = Comment::all();
+
+      return view('articles.index', compact('articles', 'comments'));
+
+    }
+
+
+
+
 
 
 
@@ -68,7 +88,9 @@ class ArticlesController extends Controller
         Article::create($input);
 
         //hier gaat hij door alle articles in database en ze tonen
-        return redirect('articles');;
+        return redirect('articles');
+
+
 
     }
 

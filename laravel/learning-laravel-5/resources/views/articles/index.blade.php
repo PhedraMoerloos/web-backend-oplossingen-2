@@ -39,7 +39,7 @@
 
           <p class="small-grey">
 
-            points by {{ $article->made_by }} |
+            points by {{ $article->made_by }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->published_at))->diffForHumans() }} |
 
             <a href="{{ action('ArticlesController@hideArticle', [$article->id]) }}">hide</a>
              |

@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Request;
-
 use App\Http\Requests;
 
 use Carbon\Carbon;
@@ -45,9 +43,7 @@ class ArticlesController extends Controller
 
       $article = Article::findorFail( $id );
 
-      $article->hide = 1;
-
-      $article->save();
+      $article->update(['hide'=> 1]);
 
 
 
@@ -64,8 +60,6 @@ class ArticlesController extends Controller
 
 
 
-
-
     public function createArticle()
     {
 
@@ -75,11 +69,10 @@ class ArticlesController extends Controller
 
 
 
-    public function storeArticle()
+    public function storeArticle(Requests\CreateArticleRequest $request)
     {
 
-        $input = Request::all();
-        //als je enkel de title zou willen bv --> Request::get('title');
+        $input = $request->all();
 
         //je moet alles invullen als je een nieuw article maakt --> title, body, published_at, anders geeft error
         $input['published_at'] = Carbon::now();

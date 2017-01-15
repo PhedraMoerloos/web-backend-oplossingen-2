@@ -3,9 +3,20 @@
 
 
 
+@section('navbar-li')
+
+    <li class="active"><a href="#">New</a></li>
+    <li><a href="{{ action('CommentsController@index') }}">Comments</a></li>
+    <li><a href="{{ action('ArticlesController@createArticle') }}">Submit</a></li>
+
+@stop
+
+
+
+
+
 @section('content')
 
-  <h1>Articles</h1>
 
 
 
@@ -31,7 +42,7 @@
 
             @endif
 
-            " target="_blank">{{ $article->title }}</a>
+            " target="_blank">{{ $article->title }} <span class="small-grey">({{ $article->url }})</span></a>
           </p>
 
 
@@ -44,15 +55,15 @@
             <a href="{{ action('ArticlesController@hideArticle', [$article->id]) }}">hide</a>
              |
 
-            <a href="{{ action('CommentsController@index', [$article->id]) }}">
+            <a href="{{ action('CommentsController@showComments', [$article->id]) }}">
 
-              @if(count($comments) == 1)
+              @if(count($comments->where('id_article', $article->id)) == 1)
 
                 1 comment</a>
 
               @else
 
-                {{ count($comments) }} comments</a>
+                {{ count($comments->where('id_article', $article->id)) }} comments</a>
 
               @endif
 

@@ -26,7 +26,7 @@ class CreateArticleRequest extends Request
         return [
 
           'title' => 'required|min:15',
-          'url' => 'url',
+          'url' => 'required|url',
           'text' => 'required|min:15',
           'made_by' => 'required'
 

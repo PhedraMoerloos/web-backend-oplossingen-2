@@ -1,5 +1,16 @@
 @extends('app')
 
+
+@section('navbar-li')
+
+    <li><a href="{{ action('ArticlesController@index') }}">New</a></li>
+    <li><a href="{{ action('CommentsController@index') }}">Comments</a></li>
+    <li class="active"><a href="#">Submit</a></li>
+
+@stop
+
+
+
 @section('content')
 
   <h1>Write a new article:</h1>

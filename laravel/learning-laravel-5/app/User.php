@@ -23,4 +23,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    //link article aan user (naam functie: $article->naam)
+    public function articles()
+    {
+
+      //user has many articles
+      return $this->hasMany('App\Article');
+
+    }
+
+
+    //link comment aan user
+    public function comments()
+    {
+
+      //user has many comments
+      return $this->hasMany('App\Comment');
+
+    }
+
 }

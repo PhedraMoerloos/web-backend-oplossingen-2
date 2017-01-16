@@ -31,8 +31,7 @@
           <p class="small-grey">
 
             <a href="{{ action('CommentsController@showComments', [$comment->id_article]) }}">parent</a>
-            | on:
-            <a href="{{ action('CommentsController@showComments', [$comment->id_article]) }}">{{ $articles->where('id', $comment->id_article) }}</a>
+
 
           </p>
 
@@ -50,3 +49,7 @@
 
 
 @stop
+
+
+| on:
+<a href="{{ action('CommentsController@showComments', [$comment->id_article]) }}">{{ $articles->where('id', $comment->id_article) }}</a>

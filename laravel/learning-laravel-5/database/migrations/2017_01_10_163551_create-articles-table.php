@@ -19,6 +19,15 @@ class CreateArticlesTable extends Migration
             $table->text('text');
             $table->timestamps();
             $table->timestamp('published_at');
+            $table->boolean('hide');
+            $table->integer('id_user')->unsigned();
+
+            $table->foreign('id_user')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+
+                  
         });
     }
 

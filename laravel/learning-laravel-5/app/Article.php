@@ -14,9 +14,30 @@ class Article extends Model
         'url',
         'text',
         'published_at',
-        'made_by',
-        'hide'
+        'hide',
+        'id_user'
 
     ];
+
+
+    //link user aan article
+    public function user()
+    {
+
+      //article has 1 user
+      return $this->belongsTo('App\User');
+
+    }
+
+
+    //link comments aan article
+    public function comments()
+    {
+
+      //article has many comments
+      return $this->hasMany('App\Comment');
+
+    }
+
 
 }

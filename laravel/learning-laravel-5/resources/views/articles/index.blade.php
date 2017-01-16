@@ -57,13 +57,13 @@
 
             <a href="{{ action('CommentsController@showComments', [$article->id]) }}">
 
-              @if(count($comments->where('id_article', $article->id)) == 1)
+              @if(count($comments->where('article_id', $article->id)) == 1)
 
                 1 comment</a>
 
               @else
 
-                {{ count($comments->where('id_article', $article->id)) }} comments</a>
+                {{ count($comments->where('article_id', $article->id)) }} comments</a>
 
               @endif
 

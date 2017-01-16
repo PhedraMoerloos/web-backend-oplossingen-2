@@ -25,10 +25,10 @@ class CreateArticleRequest extends Request
     {
         return [
 
-          'title' => 'required|min:15',
+          'title' => 'required|min:5',
           'url' => 'required|url',
-          'text' => 'required|min:15',
-          'made_by' => 'required'
+          'text' => 'required|min:10',
+          'user_id' => 'required'
 
         ];
     }

@@ -17,18 +17,18 @@ class CreateCommentTable extends Migration
             $table->text('comment');
             $table->timestamps();
             $table->timestamp('commented_at');
-            $table->integer('id_article')->unsigned();
+            $table->integer('article_id')->unsigned();
 
-            $table->foreign('id_article')
+            $table->foreign('article_id')
                   ->references('id')
                   ->on('articles')
                   ->onDelete('cascade');
 
 
 
-            $table->integer('id_user')->unsigned();
+            $table->integer('user_id')->unsigned();
 
-            $table->foreign('id_user')
+            $table->foreign('user_id')
                   ->references('id')
                   ->on('users')
                   ->onDelete('cascade');

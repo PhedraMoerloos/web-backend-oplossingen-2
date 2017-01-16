@@ -10,9 +10,9 @@ class Comment extends Model
     protected $fillable = [
 
         'comment',
-        'id_article',
+        'article_id',
         'commented_at',
-        'id_user'
+        'user_id'
 
     ];
 
@@ -29,7 +29,7 @@ class Comment extends Model
 
 
     //link article aan comment
-    public function user()
+    public function article()
     {
 
       //comment belongs to 1 article

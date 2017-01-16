@@ -20,6 +20,8 @@
     {!! Form::open(['url' => 'articles']) !!}
 
 
+    {!! Form::hidden('user_id', 1) !!}
+
 
       <div class="form-group">
 
@@ -53,14 +55,6 @@
       </div>
 
       <!-- Dit wordt op een bepaald moment automatisch ingevuld-->
-
-      <div class="form-group">
-
-        <!-- name attribuut waarde, default value, extra attributen die je wilt toepassen zoals class -->
-        {!! Form::label('made_by', 'Made by:') !!}
-        {!! Form::text('made_by', null, ['class' => 'form-control']) !!}
-
-      </div>
 
 
 

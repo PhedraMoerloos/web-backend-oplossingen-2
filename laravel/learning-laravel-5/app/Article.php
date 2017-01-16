@@ -15,7 +15,7 @@ class Article extends Model
         'text',
         'published_at',
         'hide',
-        'id_user'
+        'user_id'
 
     ];
 

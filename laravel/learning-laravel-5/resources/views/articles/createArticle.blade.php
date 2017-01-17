@@ -42,8 +42,6 @@
       </div>
 
 
-      <p>or</p>
-
 
 
       <div class="form-group">

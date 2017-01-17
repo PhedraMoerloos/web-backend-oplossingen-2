@@ -10,6 +10,8 @@ use App\Comment;
 
 use App\Article;
 
+use Carbon\Carbon;
+
 class CommentsController extends Controller
 {
 
@@ -39,5 +41,25 @@ class CommentsController extends Controller
     return view('comments.showComments', compact('commentsArticle', 'article'));
 
   }
+
+
+
+
+  public function storeComment(Requests\CreateCommentRequest $request)
+  {
+
+      $input = $request->all();
+
+      $input['commented_at'] = Carbon::now();
+
+      //nieuwe comment maken en saven naar de database
+      Comment::create($input);
+
+      return redirect('comments');
+
+
+
+  }
+
 
 }

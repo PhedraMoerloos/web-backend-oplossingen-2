@@ -36,3 +36,4 @@ Route::get('articles/{id}', 'ArticlesController@showArticle');
 
 //gaan een post met info (create form) sturen naar collectie $articles met alle articles in
 Route::post('articles', 'ArticlesController@storeArticle');
+Route::post('comments', 'CommentsController@storeComment');

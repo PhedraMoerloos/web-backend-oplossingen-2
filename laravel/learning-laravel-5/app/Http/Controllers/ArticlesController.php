@@ -14,13 +14,13 @@ class ArticlesController extends Controller
 {
     public function index() {
 
-      //articles erin gezet via eloquent
+
 
       $articles = Article::latest('published_at')->where('hide', '==', '0')->get();
 
       $comments = Comment::all();
 
-      //view laden voor overzicht articles en de json array van alle articles meegeven
+
       return view('articles.index', compact('articles', 'comments'));
 
     }

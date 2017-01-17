@@ -20,17 +20,23 @@
 
 
 
+
+
   <ul>
 
 
-      <!-- kunnen aan de articles variabele van eloquent nu -> json overzicht van artikels in database-->
+
       @foreach( $comments as $comment )
 
         <li>
 
           <p class="small-grey">
 
-            <a href="{{ action('CommentsController@showComments', [$comment->id_article]) }}">parent</a>
+            {{ $comment->user->username }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->commented_at))->diffForHumans() }} |
+
+            <a href="{{ action('CommentsController@showComments', [$comment->article_id]) }}">parent</a>
+
+            on: {{ $comment->article->title }}
 
 
           </p>
@@ -49,7 +55,3 @@
 
 
 @stop
-
-
-| on:
-<a href="{{ action('CommentsController@showComments', [$comment->id_article]) }}">{{ $articles->where('id', $comment->id_article) }}</a>

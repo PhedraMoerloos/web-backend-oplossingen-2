@@ -50,20 +50,20 @@
 
           <p class="small-grey">
 
-            points by {{ $article->made_by }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->published_at))->diffForHumans() }} |
+            points by {{ $article->user->username }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->published_at))->diffForHumans() }} |
 
             <a href="{{ action('ArticlesController@hideArticle', [$article->id]) }}">hide</a>
              |
 
             <a href="{{ action('CommentsController@showComments', [$article->id]) }}">
 
-              @if(count($comments->where('article_id', $article->id)) == 1)
+              @if(count($article->comments()->get()) == 1)
 
                 1 comment</a>
 
               @else
 
-                {{ count($comments->where('article_id', $article->id)) }} comments</a>
+                {{ count($article->comments()->get()) }} comments</a>
 
               @endif
 

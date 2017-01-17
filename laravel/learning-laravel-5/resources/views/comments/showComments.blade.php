@@ -19,6 +19,8 @@
 
   <!-- form om comment toe te voegen op artikel -->
 
+    <h3>{{ $article->title }}</h3>
+
 
 
     @foreach( $commentsArticle as $commentArticle )

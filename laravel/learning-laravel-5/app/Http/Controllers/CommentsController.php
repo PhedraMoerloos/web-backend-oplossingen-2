@@ -29,16 +29,14 @@ class CommentsController extends Controller
 
 
 
-  public function showComments( $id_article )
+  public function showComments( $article_id )
   {
 
-    $comments = Comment::all();
+    $article = Article::find($article_id);
 
-    $commentsArticle = Comment::where('id_article', $id_article)->get();
+    $commentsArticle = $article->comments()->get();
 
-
-    //return $commentsArticle;
-    return view('comments.showComments', compact('commentsArticle'));
+    return view('comments.showComments', compact('commentsArticle', 'article'));
 
   }
 

@@ -11,18 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-
-    return view('welcome');
-
-});
 
 
 
-Route::get('about', 'PagesController@about');
-Route:: get('contact', 'PagesController@contact');
-
-Route::get('articles', 'ArticlesController@index');
+Route::get('/', 'ArticlesController@index');
 Route::get('comments', 'CommentsController@index');
 
 Route::get('comments/{id_article}', 'CommentsController@showComments');

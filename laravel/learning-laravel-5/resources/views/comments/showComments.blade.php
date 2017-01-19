@@ -26,6 +26,12 @@
 
         {{ $commentArticle->comment }}
 
+        <p class="small-grey">
+
+          {{ $commentArticle->user->username }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($commentArticle->commented_at))->diffForHumans() }}
+
+        </p>
+
       </li>
 
     @endforeach

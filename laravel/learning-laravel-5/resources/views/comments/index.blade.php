@@ -5,9 +5,9 @@
 
 @section('navbar-li')
 
-    <li><a href="{{ action('ArticlesController@index') }}">New</a></li>
-    <li class="active"><a href="#">Comments</a></li>
-    <li><a href="{{ action('ArticlesController@createArticle') }}">Submit</a></li>
+  <li><a href="{{ url('/') }}">New</a></li>
+  <li class="active"><a href="{{ url('/comments') }}">Comments</a></li>
+  <li><a href="{{ url('/articles/create') }}">Submit</a></li>
 
 @stop
 
@@ -16,6 +16,7 @@
 
 
 @section('content')
+
 
 
 
@@ -32,7 +33,7 @@
 
           <p class="small-grey">
 
-            {{ $comment->user->username }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->commented_at))->diffForHumans() }} |
+            {{ $comment->user->name }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->commented_at))->diffForHumans() }} |
 
             <a href="{{ action('CommentsController@showComments', [$comment->article_id]) }}">parent</a>
 

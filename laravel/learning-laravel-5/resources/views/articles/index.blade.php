@@ -5,9 +5,9 @@
 
 @section('navbar-li')
 
-    <li class="active"><a href="#">New</a></li>
-    <li><a href="{{ action('CommentsController@index') }}">Comments</a></li>
-    <li><a href="{{ action('ArticlesController@createArticle') }}">Submit</a></li>
+  <li class="active"><a href="{{ url('/') }}">New</a></li>
+  <li><a href="{{ url('/comments') }}">Comments</a></li>
+  <li><a href="{{ url('/articles/create') }}">Submit</a></li>
 
 @stop
 
@@ -16,6 +16,7 @@
 
 
 @section('content')
+
 
 
 
@@ -50,7 +51,7 @@
 
           <p class="small-grey">
 
-            points by {{ $article->user->username }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->published_at))->diffForHumans() }} |
+            points by {{ $article->user->name }} {{ \Carbon\Carbon::createFromTimeStamp(strtotime($article->published_at))->diffForHumans() }} |
 
             <a href="{{ action('ArticlesController@hideArticle', [$article->id]) }}">hide</a>
              |

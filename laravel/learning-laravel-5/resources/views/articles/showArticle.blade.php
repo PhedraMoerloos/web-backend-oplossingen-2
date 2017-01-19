@@ -3,9 +3,9 @@
 
 @section('navbar-li')
 
-    <li class="active"><a href="#">New</a></li>
-    <li><a href="{{ action('CommentsController@index') }}">Comments</a></li>
-    <li><a href="{{ action('ArticlesController@createArticle') }}">Submit</a></li>
+  <li class="active"><a href="{{ url('/') }}">New</a></li>
+  <li><a href="{{ url('/comments') }}">Comments</a></li>
+  <li><a href="{{ url('/articles/create') }}">Submit</a></li>
 
 @stop
 

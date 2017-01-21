@@ -19,7 +19,6 @@ class ArticlesController extends Controller
       //als er niemand is ingelogd -> $user = null->name; ->error
 
 
-
       $articles = Article::latest('published_at')->where('hide', '==', '0')->get();
 
       $comments = Comment::all();
@@ -80,6 +79,8 @@ class ArticlesController extends Controller
 
         //je moet alles invullen als je een nieuw article maakt --> title, body, published_at, anders geeft error
         $input['published_at'] = Carbon::now();
+
+        $input['user_id'] = \Auth::user()->id;
 
         //nieuw article maken en saven naar de database
         Article::create($input);

@@ -26,8 +26,7 @@ class CreateCommentRequest extends Request
       return [
 
         'comment'     =>  'required|min:10',
-        'user_id'     =>  'required',
-        'article_id'  =>  'required'
+        'article_id'  =>  'required',
 
       ];
     }

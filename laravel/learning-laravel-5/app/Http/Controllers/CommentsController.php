@@ -52,6 +52,8 @@ class CommentsController extends Controller
 
       $input['commented_at'] = Carbon::now();
 
+      $input['user_id'] = \Auth::user()->id;
+
       //nieuwe comment maken en saven naar de database
       Comment::create($input);
 

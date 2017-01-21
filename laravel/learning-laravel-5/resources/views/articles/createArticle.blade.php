@@ -20,9 +20,6 @@
     {!! Form::open(['url' => 'articles']) !!}
 
 
-    {!! Form::hidden('user_id', 1) !!}
-
-
       <div class="form-group">
 
         <!-- name attribuut waarde, default value, extra attributen die je wilt toepassen zoals class -->

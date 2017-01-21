@@ -28,7 +28,6 @@ class CreateArticleRequest extends Request
           'title' => 'required|min:5',
           'url' => 'required|url',
           'text' => 'required|min:10',
-          'user_id' => 'required'
 
         ];
     }

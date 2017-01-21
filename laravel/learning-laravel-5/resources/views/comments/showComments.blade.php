@@ -43,8 +43,6 @@
         {!! Form::open(['url' => 'comments']) !!}
 
 
-        {!! Form::hidden('user_id', 1) !!}
-
         {!! Form::hidden('article_id', $article->id) !!}
 
 

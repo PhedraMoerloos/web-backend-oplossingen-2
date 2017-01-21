@@ -57,7 +57,7 @@ class CommentsController extends Controller
       //nieuwe comment maken en saven naar de database
       Comment::create($input);
 
-      return redirect('comments');
+      return back();
 
 
 

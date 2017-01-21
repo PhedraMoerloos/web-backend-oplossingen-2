@@ -12,6 +12,17 @@ use App\Comment;
 
 class ArticlesController extends Controller
 {
+
+
+    public function __construct()
+    {
+
+        //middleware gebruiken om create/submit pagina enkel visible te maken voor ingelogde users, niet guests
+        $this->middleware('auth', ['only' => 'createArticle']);
+
+    }
+
+
     public function index() {
 
 

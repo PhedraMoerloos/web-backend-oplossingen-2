@@ -15,6 +15,10 @@ class ArticlesController extends Controller
     public function index() {
 
 
+      //$user = \Auth::user()->name;
+      //als er niemand is ingelogd -> $user = null->name; ->error
+
+
 
       $articles = Article::latest('published_at')->where('hide', '==', '0')->get();
 
